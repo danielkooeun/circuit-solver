@@ -31,15 +31,15 @@ void Parser() {
     while (!cin.eof()) {
 
         string name;
-        double resistance = NULL;
+        double resistance = -1;
 
         stringstream lineStream(line);
         lineStream >> command;
 
         // Sets voltage for node (already existing)
         if (command == "setV") {
-            int nodeid = NULL;
-            double voltage = NULL;
+            int nodeid = -1;
+            double voltage = -1;
 
             lineStream >> nodeid >> voltage;
             
@@ -55,7 +55,7 @@ void Parser() {
         
         // Removes set voltage boolean for node (false)
         else if (command == "unsetV") {
-            int nodeid = NULL;
+            int nodeid = -1;
 
             lineStream >> nodeid;
             
@@ -86,8 +86,8 @@ void Parser() {
         
         // insert resistor
         else if (command == "insertR") {
-            int nodeid1 = NULL;
-            int nodeid2 = NULL;
+            int nodeid1 = -1;
+            int nodeid2 = -1;
             string resistanceTest;
             string nodeid1Test;
             string nodeid2Test;
@@ -163,7 +163,7 @@ void Parser() {
             if (testOne) {
                 if (lineStream.fail()) {
                     // test for invalid argument
-                    if (name.empty() || resistance == NULL)
+                    if (name.empty() || resistance == -1)
                         cout << eTooFew << endl;
                 } else {
                     // Test for whether there are extra arguments
